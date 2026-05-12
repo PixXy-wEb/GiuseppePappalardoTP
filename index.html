@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Giuseppe Pappalardo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0c12 0%, #14181f 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .card-container {
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .profile-card {
+            background: #ffffff;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-bg {
+            background: linear-gradient(135deg, #3d5ec9, #382b8b);
+            padding: 30px 24px 30px;
+            text-align: center;
+        }
+
+        /* Photo placeholder styling */
+        .photo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            background: #f0e6d8;
+        }
+
+        .photo-placeholder {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e8dcc8, #d4c5aa);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .photo-placeholder span {
+            font-size: 48px;
+            opacity: 0.7;
+        }
+
+        h1 {
+            font-size: 26px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.3px;
+            margin-bottom: 6px;
+        }
+
+        .title {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        .content {
+            padding: 32px 24px;
+            background: white;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid #f0f0f0;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .contact-item:active {
+            background-color: #f9f9f9;
+            transform: scale(0.98);
+        }
+
+        .icon-circle {
+            width: 48px;
+            height: 48px;
+            background: #f5f0e6;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 13px;
+            color: #8b8a8a;
+            letter-spacing: 0.3px;
+            margin-bottom: 4px;
+        }
+
+        .contact-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1f1a12;
+            word-break: break-all;
+        }
+
+        /* Button group styles */
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .save-button {
+            background: linear-gradient(135deg, #1f1a12, #2a241c);
+            border: none;
+            width: 100%;
+            padding: 18px 24px;
+            border-radius: 60px;
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .save-button:active {
+            transform: scale(0.97);
+            background: linear-gradient(135deg, #2a241c, #1f1a12);
+        }
+
+        .pdf-button {
+            background: linear-gradient(135deg, #203fba, #1d226a);
+            border: none;
+            width: 100%;
+            padding: 16px 24px;
+            border-radius: 60px;
+            color: white;
+            font-size: 17px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .pdf-button:active {
+            transform: scale(0.97);
+            background: linear-gradient(135deg, #1f56cc, #1a246e);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 28px;
+            padding-top: 20px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .social-link {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: #f8f8f8;
+            border-radius: 40px;
+            color: #2d2d2d;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .social-link:active {
+            background: #e8e8e8;
+            transform: scale(0.96);
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .photo-note {
+            text-align: center;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 8px;
+        }
+
+        @media (max-width: 480px) {
+            .content {
+                padding: 24px 20px;
+            }
+            .contact-value {
+                font-size: 14px;
+            }
+            .icon-circle {
+                width: 44px;
+                height: 44px;
+                font-size: 20px;
+            }
+            .save-button, .pdf-button {
+                padding: 14px 20px;
+                font-size: 15px;
+            }
+            .profile-photo, .photo-placeholder {
+                width: 100px;
+                height: 100px;
+            }
+            .photo-placeholder span {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="profile-card">
+            <div class="header-bg">
+                <!-- PHOTO PLACEHOLDER - Replace with actual photo -->
+                <div class="photo-container" id="photoContainer">
+                    <div class="photo-placeholder">
+                        <img src="profile.jpeg" alt="Lic. Giuseppe Pappalardo" class="profile-photo">
+                    </div>
+                </div>
+                <h1>Pappalardo</h1>
+                <div class="title">Lic. Giuseppe Pappalardo</div>
+                <div class="photo-note">
+                    <span id="placeholderNote"></span>
+                </div>
+            </div>
+            <div class="content">
+                <!-- Phone -->
+                <a href="tel:8092585589" class="contact-item">
+                    <div class="icon-circle">📞</div>
+                    <div class="contact-info">
+                        <div class="contact-label">TELEFONO</div>
+                        <div class="contact-value">+33 348 3827494</div>
+                    </div>
+                </a>
+                
+                <!-- Email -->
+                <a href="mailto:elarmadorrd@gmail.com" class="contact-item">
+                    <div class="icon-circle">✉️</div>
+                    <div class="contact-info">
+                        <div class="contact-label">EMAIL</div>
+                        <div class="contact-value">giuseppe@papparlardosrl.it</div>
+                    </div>
+                </a>
+                
+                <!-- Website -->
+                <a href="https://www.pappalardosrl.it/" target="_blank" rel="noopener noreferrer" class="contact-item">
+                    <div class="icon-circle">🌐</div>
+                    <div class="contact-info">
+                        <div class="contact-label">WEBSITE</div>
+                        <div class="contact-value">pappalardosrl.it</div>
+                    </div>
+                </a>
+                
+                <!-- Button Group: Save Contact + PDF Download -->
+                <div class="button-group">
+                    <button class="save-button" id="saveContactBtn">
+                        💾 Guarda mi contacto
+                    </button>
+                </div>
+                
+                <!-- Social Links -->
+                <div class="social-links">
+                    <a href="https://www.instagram.com/pappalardosrl/" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" width="20" height="20">
+                     Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-note">
+            Tap to save • Instant contact
+        </div>
+    </div>
+
+    <script>
+    // Business Information
+    const contactData = {
+        name: "Lic. Giuseppe Pappalardo",
+        company: "Pappalardo Srl",
+        phone: "+33 348 3827494",
+        email: "giuseppe@pappalardosrl.it",
+        website: "https://www.pappalardosrl.it/",
+        instagram: "https://www.instagram.com/pappalardosrl/"
+    };
+
+    // Generate vCard file
+    function generateVCard() {
+        return `BEGIN:VCARD
+VERSION:3.0
+FN:${contactData.name}
+ORG:${contactData.company}
+TEL;TYPE=CELL:${contactData.phone}
+EMAIL:${contactData.email}
+URL:${contactData.website}
+URL;TYPE=Instagram:${contactData.instagram}
+NOTE:Smart business card - Pappalardo Srl
+END:VCARD`;
+    }
+
+    // Save contact to phone (download vCard)
+    function saveContact() {
+        const vcardData = generateVCard();
+        const blob = new Blob([vcardData], { type: "text/vcard" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "pappalardo_contact.vcf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+        
+        // Visual feedback
+        const btn = document.getElementById("saveContactBtn");
+        const originalText = btn.innerHTML;
+        btn.innerHTML = "✅ ¡Guardado! Revisa tus descargas";
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+        }, 2000);
+    }
+
+    // Download PDF from GitHub
+    function downloadPDF() {
+        // Open the PDF file in a new tab (this triggers download/view)
+        window.open('Pappalardo_(brochure)_crop.pdf', '_blank');
+        
+        // Visual feedback
+        const btn = document.getElementById("downloadPdfBtn");
+        const originalText = btn.innerHTML;
+        btn.innerHTML = "✅ Abriendo PDF...";
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+        }, 2000);
+    }
+
+    // Attach event listeners
+    document.getElementById("saveContactBtn").addEventListener("click", saveContact);
+    document.getElementById("downloadPdfBtn").addEventListener("click", downloadPDF);
+</script>
+</body>
+</html>
